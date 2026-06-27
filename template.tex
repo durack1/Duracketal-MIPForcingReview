@@ -82,6 +82,10 @@
 %% define user commands
 \newcommand{\mycomment}[1]{}
 
+% Define colours to capture author contributions
+\def\cred#1{{\color{red}#1}}
+\def\cblue#1{{\color{blue}#1}}
+
 \begin{document}
 
 \title{TEXT}
@@ -151,6 +155,9 @@ Climate “forcings” are natural and anthropogenic (human-sourced) agents that
 
 
 An observationally based energy balance for the Earth since 1950 - D. M. Murphy, S. Solomon, R. W. Portmann, K. H. Rosenlof, P. M. Forster, T. Wong https://doi.org/10.1029/2009JD012105
+
+21st Century Scenario Forcing Increases More for CMIP6 Than CMIP5 Models - Frederiksen, H.-B., C. J. Smith et al https://doi.org/10.1029/2023GL102916
+
 
 
 \section{What is climate forcing?}
@@ -235,7 +242,7 @@ Also see /Users/durack1/sync/Docs/admin/LLNL/24/240918_CERESScienceTeamMeeting-O
 \renewcommand{\arraystretch}{1.5}
 \scriptsize
 \centering
-\caption{Future scenario climate forcing across the Model Intercomparison Project (MIPs) phases, through time. Values represent 2100 simulation end concentrations for the four largest radiative impact species (see Table 6.14; Ramaswamy et al., 2001). For CMIP6 half of the 8 total scenarios are included (omitted ssp119, ssp370, ssp434, ssp534-over). For CMIP7 4 illustrative scenarios are selected, a subset of the full CMIP7 ScenarioMIP selection (van Vuuren et al., 2025).}
+\caption{Future scenario climate forcing across the Model Intercomparison Project (MIPs) phases, through time. Values represent 2100 simulation end concentrations for the four largest radiative impact species \cite[see Table 6.14;][]{ramaswamy_radiative_2001}. For CMIP6 half of the 8 total scenarios are included (omitted ssp119, ssp370, ssp434, ssp534-over). For CMIP7 4 illustrative scenarios are selected, a subset of the full CMIP7 ScenarioMIP selection van Vuuren et al., 2025).}
 \resizebox{\textwidth}{!} {
 \begin{tabularx}{0.9\textwidth} {
   | >{\raggedright\arraybackslash}X
@@ -245,30 +252,32 @@ Also see /Users/durack1/sync/Docs/admin/LLNL/24/240918_CERESScienceTeamMeeting-O
   | >{\centering\arraybackslash}X
   | >{\centering\arraybackslash}X | }
 \hline
-\textbf{MIP era/experiment} & \textbf{2100 Effective Radiative Forcing (ERF; W m$^{2}$)} & \textbf{CO$_{2}$ (ppm)} & \textbf{CH$_{4}$ (ppm)} & \textbf{N$_{2}$O (ppb)} & \textbf{O$_{3}$ (Dobson units)}\\ \hline
+\textbf{MIP era/experiment} & \textbf{2100 Effective Radiative Forcing (ERF; W m$^{-2}$)} & \textbf{CO$_{2}$ (ppm)} & \textbf{CH$_{4}$ (ppm)} & \textbf{N$_{2}$O (ppb)} & \textbf{O$_{3}$ (Dobson units - \cred{note actual vs change numbers})}\\ \hline
 \hline
 \textbf{CMIP3 SRESB1} & 3.55 & 540 & 1574 & 375 & 30.1\\ \hline
 \textbf{CMIP3 SRESA1B} & 4.96 & 703 & 1974 & 372 & 37.5\\ \hline
 \textbf{CMIP3 SRESA2} & 5.89 & 836 & 3731 & 447 & 54.8\\ \hline
 \hline
-\textbf{CMIP5 rcp26} & x & x & x & x & x\\ \hline
-\textbf{CMIP5 rcp45} & x & x & x & x & x\\ \hline
-\textbf{CMIP5 rcp60} & x & x & x & x & x\\ \hline
-\textbf{CMIP5 rcp85} & x & x & x & x & x\\ \hline
+\textbf{CMIP5 rcp26} & $\sim$2.6 & 420.9 & 1254 & 344 & 15\\ \hline
+\textbf{CMIP5 rcp45} & $\sim$4.5 & 538.4 & 1576 & 372 & 13\\ \hline
+\textbf{CMIP5 rcp60} & $\sim$6.0 & 669.7 & 1649 & 406 & 17\\ \hline
+\textbf{CMIP5 rcp85} & $\sim$8.5 & 935.9 & 3751 & 435 & 20\\ \hline
 \hline
-\textbf{CMIP6 ssp126} & x & x & x & x & x\\ \hline
-\textbf{CMIP6 ssp245} & x & x & x & x & x\\ \hline
-\textbf{CMIP6 ssp370} & x & x & x & x & x\\ \hline
-\textbf{CMIP6 ssp585} & x & x & x & x & x\\ \hline
+\textbf{CMIP6 ssp126} & $\sim$2.6 & 446 & 1036 & 354 & -\\ \hline
+\textbf{CMIP6 ssp245} & $\sim$4.5 & 603 & 1683 & 377 & -\\ \hline
+\textbf{CMIP6 ssp370} & $\sim$7.0 & 867 & 3372 & 422 & -\\ \hline
+\textbf{CMIP6 ssp585} & $\sim$8.5 & 1135 & 2415 & 392 & -\\ \hline
 \hline
-\textbf{CMIP7 VLLO-ext} & x & x & x & x & x\\ \hline
-\textbf{CMIP7 ML-ext} & x & x & x & x & x\\ \hline
-\textbf{CMIP7 M-ext} & x & x & x & x & x\\ \hline
-\textbf{CMIP7 H-ext} & x & x & x & x & x\\ \hline
+\textbf{CMIP7 VLLO-ext} & $\sim$2.5 & x & x & x & x\\ \hline
+\textbf{CMIP7 ML-ext} & $\sim$4.5 & x & x & x & x\\ \hline
+\textbf{CMIP7 M-ext} & $\sim$5.5 & x & x & x & x\\ \hline
+\textbf{CMIP7 H-ext} & $\sim$7.5 & x & x & x & x\\ \hline
 \end{tabularx}
 } % /resizebox
 \label{tab:tab1-ForcingByMIPsThroughTime}
-\footnotesize{Note: for CMIP3, both ISAM and Bern-CC IAMs were used, each with reference, low and high, with corresponding climate sensitivities 2.5\degree, 1.5\degree and 4.5\degree celsius respectively. For illustrative purposes all CO$_{2}$ values represent the Bern-CC reference scenario values (Table II.2.1; Ramaswamy et al., 2001). CH$_{4}$ values (Table II.2.2; Ramaswamy et al., 2001). N$_{2}$O (Table II.2.3; Ramaswamy et al., 2001) and O$_{3}$ (Table II.2.5; Ramaswamy et al., 2001). For CMIP3, the Effective Radiative Forcing (ERF) values also follow the Bern-CC reference scenario (Table II.3.1; Ramaswamy et al., 2001).}
+\footnotesize{Note: for CMIP3, both ISAM and Bern-CC IAMs were used, each with reference, low and high scenarios, with corresponding climate sensitivities 2.5\degree, 1.5\degree and 4.5\degree celsius respectively. For illustrative purposes all CO$_{2}$ values represent the Bern-CC reference scenario values \cite[see Table II.2.1;][]{ramaswamy_radiative_2001}. CH$_{4}$ values \cite[see Table II.2.2;][]{ramaswamy_radiative_2001}. N$_{2}$O \cite[see Table II.2.3;][]{ramaswamy_radiative_2001} and O$_{3}$ \cite[see Table II.2.5;][]{ramaswamy_radiative_2001}. For CMIP3, the Effective Radiative Forcing (ERF) values also follow the Bern-CC reference scenario \cite[see Table II.3.1;][]{ramaswamy_radiative_2001}. CMIP5 (Table AII.4.1; Prather et al., 2013) and CMIP6 \cite[Table AIII.2;][]{dentener_tables_2021}. Also see \citep{ramaswa}}
+
+
 \mycomment{
 See ARs
 CMIP3
@@ -276,8 +285,12 @@ TAR future 2050/2100 radiative forcings Ramaswamy et al., 2001 table 6.14 https:
 TAR abundances and burdens - https://www.ipcc.ch/site/assets/uploads/2018/03/TAR-APPENDICES.pdf#page=21
 TAR radiative forcing - https://www.ipcc.ch/site/assets/uploads/2018/03/TAR-APPENDICES.pdf#page=31
 CMIP5
+AR5 Table All.4.1 abundances https://www.ipcc.ch/site/assets/uploads/2017/09/WG1AR5_AnnexII_FINAL.pdf#page=28
 Etminan et al 2016 https://doi.org/10.1002/2016GL071930 - Myhre et al 2013, 1998
 CMIP6
+Table AIII.2 https://www.ipcc.ch/report/ar6/wg1/downloads/report/IPCC_AR6_WGI_AnnexIII.pdf#page=6
+
+Overview review - Ramaswamy et al., 2018 https://doi.org/10.1175/AMSMONOGRAPHS-D-19-0001.1
 
 CMIP3 history lessons (Aug 2003 through Jan 2004)
 linked off https://pcmdi.llnl.gov/ipcc/info_for_modeling_groups.html
