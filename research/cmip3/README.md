@@ -54,7 +54,7 @@ cmip3/
 | 3  | giss_aom            | GISS, USA              | 2  | ☑ | G=TV(GHGA1B.LP) confirmed; SS=FXc uncertain; OC/MD absent |
 | 4  | giss_model_e_h      | GISS, USA              | 2  | ☑ | MD/SS=FXc (not TV); confirmed Table S1 MD/SS=Y errors |
 | 5  | giss_model_e_r      | GISS, USA              | 2  | ☑ | Identical atmospheric forcing to ModelE-H; R=Russell1995 ocean only |
-| 6  | ncar_ccsm3_0        | NCAR, USA              | 3  | ☑ | Fully resolved from Meehl 2006 §2a: G/O/SD/BC/SO/VL=TV; MD/SS/LU=FXk; OC=? |
+| 6  | ncar_ccsm3_0        | NCAR, USA              | 3  | ☑ | Fully resolved: G/O/SD/BC/OC/SO/VL=TV; MD/SS/LU=FXk (Meehl 2006 §2a; OC closed 2026-07-05 via Collins 2006b CAM3 carbonaceous field) |
 | 7  | ncar_pcm1           | NCAR, USA              | 3  | ☑ | Minimal aerosol forcing; SO/VL confirmed |
 | 8  | cccma_cgcm3_1_t47   | CCCma, Canada          | 4  | ☑ | Standard CMIP3 GHG protocol; SO/VL confirmed |
 | 9  | cccma_cgcm3_1_t63   | CCCma, Canada          | 4  | ☑ | Identical forcing to T47; higher-res dynamics only |
@@ -69,7 +69,7 @@ cmip3/
 | 18 | ukmo_hadgem1        | UKMO, UK               | 8  | ☑ | SS=TV(interactive wind-speed); LU=TV*(confirmed Table S1 LU=- error); MD=na*(confirmed Table S1 MD=Y error) |
 | 19 | miroc3_2_hires      | MIROC, Japan           | 9  | ☑ | SPRINTARS aerosols (interactive); SO/VL confirmed |
 | 20 | miroc3_2_medres     | MIROC, Japan           | 9  | ☑ | Identical forcing to hires; medres dynamics only |
-| 21 | mri_cgcm2_3_2a      | MRI, Japan             | 9  | ☑ | O=na* (strong conflict; PCMDI "atmospheric chemistry: Not included" vs Table S1 O=Y) |
+| 21 | mri_cgcm2_3_2a      | MRI, Japan             | 9  | ☑ | O=FXc* (**confirmed** Table S1 error; fixed ozone climatology in radiation — Yukimoto 2001 Table 1 — not time-varying; resolved 2026-07-05) |
 | 22 | bccr_bcm2.0         | BCCR, Norway           | 10 | ☑ | SD=TV(Boucher & Pham 2002); SO/VL=na (fixed 1368 W m⁻²; confirmed absent) |
 | 23 | iap_fgoals1_0       | IAP, China             | 10 | ☑ | SO=na (fixed 1367 W m⁻²); VL=na; exhaustive PCMDI 20C3M list confirms both absent |
 | 24 | inmcm3_0            | INM, Russia            | 10 | ☑ | VL=TV(pcm_volcanic_1890-2000_T42.nc); FC=FXc(water-only, GIN/Barents/Kara seas) |
@@ -88,7 +88,7 @@ Legend: ☐ not started · ◐ in progress · ☑ complete
 | 6  | CNRM + IPSL (France)             | CNRM-CM3, IPSL-CM4                 | ☑ complete — both absent natural forcings; IPSL has 3 confirmed Table S1 errors |
 | 7  | MPI + INGV + MIUB (Germany/Italy/Korea) | MPI-ECHAM5, INGV-ECHAM4, MIUB ECHO-G | ☑ complete — MPI BC/OC/LU absent; ECHAM4-lineage O=FXc (not TV) |
 | 8  | UKMO (UK)                        | HadCM3, HadGEM1                    | ☑ complete — HadGEM1 MD/LU conflicts confirmed; HadGEM1 SS=TV(interactive) |
-| 9  | MIROC + MRI (Japan)              | MIROC3.2 hires/medres, MRI CGCM2.3.2a | ☑ complete — MIROC SPRINTARS confirmed; MRI O=na* (strong conflict vs Table S1) |
+| 9  | MIROC + MRI (Japan)              | MIROC3.2 hires/medres, MRI CGCM2.3.2a | ☑ complete — MIROC SPRINTARS confirmed; MRI O=FXc* (confirmed Table S1 error; fixed ozone climatology, not time-varying) |
 | 10 | BCCR + IAP + INM (Norway/China/Russia) | BCCR BCM2.0, IAP FGOALS1.0, INM-CM3.0 | ☑ complete — all resolved; BCCR SD=Boucher&Pham 2002; IAP SO/VL=na; INM VL/FC documented |
 
 ## Confirmed errors in Table S1 (≥22)
@@ -96,17 +96,17 @@ Legend: ☐ not started · ◐ in progress · ☑ complete
 Table S1 is a secondary compilation and contains systematic errors. These have been confirmed from PCMDI primary sources:
 
 ### Systematic errors (affect multiple models)
-- **SO/VL=Y wrong for CNRM, IPSL, INGV, MPI**: All coded Y; none of these models applied time-varying natural forcings in their 20C3M runs. Confirmed from PCMDI verbatim forcing lists.
+- **SO/VL=Y wrong for CNRM, IPSL, INGV, MPI**: All coded Y; none applied time-varying natural forcings in 20C3M. **CNRM, IPSL, INGV** confirmed from PCMDI *verbatim* "no solar/volcanic variability" statements. **MPI-ECHAM5** SO/VL are *likely* (not verbatim-confirmed) conflicts — inferred from the PCMDI "only anthropogenic forcings" phrasing (medium confidence); hence coded `?(likely na)*` in the matrix, the only 2 literal-`?` cells remaining.
 - **O=Y wrong for INGV-SXG, MIUB ECHO-G**: Both use the ECHAM4 fixed spectral band absorber — a FX climatology, not a time-varying prescribed dataset. O=Y implies TV; the actual treatment is FXc.
 
 ### Model-specific errors
 - **GISS ModelE-H/R MD=Y and SS=Y**: Both are FXc (fixed monthly climatology), not time-varying. Table S1 Y implies TV.
-- **MPI-ECHAM5 BC=Y, OC=Y, LU=Y**: All three absent from the 20C3M forcing list; only GHG + sulphate + volcanic applied. Three simultaneous Table S1 errors.
+- **MPI-ECHAM5 BC=Y, OC=Y, LU=Y**: All three absent from the 20C3M forcing list; only anthropogenic forcings applied (GHG, ozone, sulphate direct + first-indirect) — **not** volcanic (SO/VL are likely further errors). Three simultaneous Table S1 errors.
 - **MIUB ECHO-G SI=−**: Indirect aerosol effect IS applied; Table S1 SI=− is wrong.
 - **MIUB ECHO-G FC=H**: Heat AND freshwater flux corrections applied; Table S1 FC=H is incomplete.
 - **HadGEM1 MD=Y**: Mineral dust absent from HadGEM1 CLASSIC aerosol scheme (added only in HadGEM2/HiGEM era). Table S1 MD=Y is wrong.
 - **HadGEM1 LU=−**: Goldewijk (2001) HYDE land-use confirmed in Run 1 (PCMDI PDF §V verbatim). Table S1 LU=− is a confirmed error.
-- **MRI CGCM2.3.2a O=Y**: PCMDI PDF §II.A "atmospheric chemistry: Not included"; absent from four-agent forcing list. Strong candidate error (definitive confirmation needs Yukimoto 2001 §radiation).
+- **MRI CGCM2.3.2a O=Y**: **CONFIRMED error** (2026-07-05). Ozone is a fixed radiative absorber (Yukimoto 2001 Table 1: O₃ in SW & LW; Yukimoto 2006), not time-varying; also absent from the PCMDI four-agent 20C3M forcing list. Correct code FXc (fixed climatology). Table S1 O=Y (time-varying) is wrong.
 - **IPSL-CM4 O=Y**: PCMDI PDF §V.C "All other variables are kept constant. There are no natural forcings." Fixed ozone — Table S1 O=Y is wrong (third IPSL error alongside SO=Y and VL=Y).
 
 ## Cross-cutting findings (Stage 10 — BCCR + IAP + INM)
@@ -121,7 +121,7 @@ Table S1 is a secondary compilation and contains systematic errors. These have b
 ## Cross-cutting findings (Stage 9 — MIROC + MRI)
 
 - **MIROC3.2 hires/medres: SPRINTARS interactive aerosols**: Both models use SPRINTARS (Spectral Radiation-Transport Model for Aerosol Species) — a fully interactive online aerosol module computing sulphate, BC, OC, mineral dust, and sea salt from precursor emissions. All six aerosol keys = exc/TV. This CMIP3-era interactive aerosol scheme continued into CMIP5 MIROC-ESM.
-- **MRI CGCM2.3.2a O=Y strong candidate error**: PCMDI PDF §II.A states "atmospheric chemistry: Not included." The four-agent 20C3M forcing list (GHG, sulphate, volcanic, solar) excludes ozone entirely. Table S1 O=Y is a strong candidate error; definitive resolution requires Yukimoto 2001 §radiation section.
+- **MRI CGCM2.3.2a O=Y — confirmed error (2026-07-05)**: Yukimoto 2001 Table 1 (p. 49) lists O₃ as a fixed radiative absorber in both the shortwave (Shibata & Uchiyama 1992) and longwave (Shibata & Aoki 1989) schemes; Yukimoto 2006 (p. 335) confirms. Ozone is thus a fixed climatology (FXc), NOT time-varying — and is absent from the PCMDI four-agent 20C3M forcing list (GHG, sulphate, volcanic, solar). Table S1 O=Y (which under this review's convention means time-varying) is therefore a confirmed error. The definitive 20C3M forcing list is in Yukimoto et al. 2005 (not held), but the radiation-scheme description + PCMDI list settle the fixed-vs-transient question.
 
 ## Cross-cutting findings (Stage 8 — UKMO: HadCM3, HadGEM1)
 
@@ -133,7 +133,7 @@ Table S1 is a secondary compilation and contains systematic errors. These have b
 
 ## Cross-cutting findings (Stage 7 — MPI + INGV + MIUB)
 
-- **MPI-ECHAM5: BC, OC, and LU absent from 20C3M forcing**: Only GHG + sulphate + volcanic applied. Three simultaneous Table S1 errors (BC=Y, OC=Y, LU=Y all wrong). This is analogous to the CMIP3 SO/VL error pattern — secondary compilation errors on multiple forcing agents simultaneously.
+- **MPI-ECHAM5: BC, OC, and LU absent from 20C3M forcing**: only **anthropogenic** forcings applied — GHGs, ozone (Kiehl 1999 anomaly vs 1870), and sulphate (direct + first indirect); **no natural forcings** (solar/volcanic excluded by the PCMDI "only anthropogenic forcings" statement). Three simultaneous Table S1 errors (BC=Y, OC=Y, LU=Y all wrong); SO=Y/VL=Y are also likely errors (see below). This is analogous to the CMIP3 SO/VL error pattern — secondary compilation errors on multiple forcing agents simultaneously.
 - **ECHAM4 lineage: O=FXc (not TV)**: Both INGV-SXG and MIUB ECHO-G are built on ECHAM4, which uses a fixed spectral band absorber for ozone — a monthly climatology, not a time-varying dataset. Table S1 O=Y for these models implies TV; the actual treatment is FXc. This pattern extends across all ECHAM4-derived models.
 - **MIUB ECHO-G FC applies both heat and freshwater corrections**: Table S1 FC=H (heat only) is incomplete — freshwater corrections also applied. MIUB ECHO-G also applies indirect aerosol effect (SI) despite Table S1 SI=−.
 - **MPI sulphate scheme**: Interactive sulfur chemistry driven by SO₂ emissions; time-varying sulphate burden (TV). No BC, OC, mineral dust, or sea salt separate forcings.
@@ -151,7 +151,7 @@ Table S1 is a secondary compilation and contains systematic errors. These have b
 
 ## Cross-cutting findings (Stage 3 — NCAR)
 
-- **NCAR CCSM3 fully resolved from Meehl et al. 2006 §2a** (doi:10.1175/JCLI3746.1): G=TV (ISAM CO₂ + Dai 2001 halocarbons); O=TV (MOZART tropospheric + NOAA Kiehl 1999 stratospheric); SD=TV (prognostic sulfur cycle; Smith 2001/2004 SO₂ emissions); BC=TV (population-scaled time-evolving); MD/SS=FXk (year-2000 values throughout); LU=FXk (present-day land cover); SO=TV (Lean 1995); VL=TV (Ammann 2003). OC treatment not explicit in Meehl 2006 — still open.
+- **NCAR CCSM3 fully resolved from Meehl et al. 2006 §2a** (doi:10.1175/JCLI3746.1): G=TV (ISAM CO₂ + Dai 2001 halocarbons); O=TV (MOZART tropospheric + NOAA Kiehl 1999 stratospheric); SD=TV (prognostic sulfur cycle; Smith 2001/2004 SO₂ emissions); BC=TV (population-scaled time-evolving); MD/SS=FXk (year-2000 values throughout); LU=FXk (present-day land cover); SO=TV (Lean 1995); VL=TV (Ammann 2003); **OC=TV** (resolved 2026-07-05: Collins et al. 2006b §2d shows CAM3 treats BC+OC as a single "carbonaceous" field, so OC inherits BC's population-scaled time-variation). **All 12 CCSM3 cells resolved.**
 - **NCAR PCM1**: Simpler aerosol scheme than CCSM3; fewer forcing agents applied; SO/VL documented.
 
 ## Cross-cutting findings (Stage 2 — GISS)
@@ -168,12 +168,14 @@ Table S1 is a secondary compilation and contains systematic errors. These have b
 
 All three file types are consistent. Treat `cmip3-forcing-synthesis.html` as the visual source of truth; `data/verified-forcing-matrix.csv` as the machine-readable record; model `.md` files as the per-model primary evidence trail.
 
-### Residual open items (5)
+### Residual open items (3)
+
+*(Two closed 2026-07-05: NCAR CCSM3 OC via Collins et al. 2006b → OC=TV; MRI-CGCM2.3.2a O via Yukimoto 2001/2006 → O=FXc*, confirmed Table S1 error.)*
 
 | Model | Cell | Status / what's needed |
 |-------|------|------------------------|
 | CSIRO Mk3.0/3.5 | O=Y | TV capability exists in ARPEGE-based atmosphere; 20C3M-specific treatment undocumented in PCMDI PDF. Likely TV but unconfirmed. |
 | UKMO HadCM3 | VL=Y | Likely correct (Sato 1993 applied in CMIP3 UKMO runs) but not explicitly confirmed for the 20C3M archived submission. |
-| MRI CGCM2.3.2a | O=Y* | Strong conflict confirmed (PCMDI PDF); definitive resolution needs Yukimoto 2001 §radiation section. |
 | GISS AOM | SS=Y | Sea salt not named as distinct forcing agent in PCMDI PDF; unclear whether applied as separate diagnostic or subsumed into sulphate aerosol scheme. |
-| NCAR CCSM3 | OC=? | Likely TV alongside BC (Collins 2006b J. Climate 19:2144 would confirm); Meehl 2006 makes BC TV but does not explicitly mention OC. |
+
+**Note on the accounting:** these 3 are the cells needing a *new source* to resolve. Separately, **MPI-ECHAM5 SO/VL** are the only 2 literal-`?` cells in the matrix (`?(likely na)*`) — treated as *likely* Table S1 conflicts (inferred from "only anthropogenic forcings"), not sourcing-residuals. So the CMIP3 matrix has 5 not-fully-nailed cells total: 3 sourcing-residuals (above) + 2 likely-conflict MPI cells.

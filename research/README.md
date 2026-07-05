@@ -57,7 +57,7 @@ Per phase: `cmip3/`, `cmip5/`, `cmip6/`, each with:
 ## Scope (confirmed)
 - **CMIP3 first pass:** Stages 1–10 document only the CMIP3 20C3M forcings (matches Table S1), then a
   later pass traces each centre's CMIP5 and CMIP6/input4MIPs lineage forward.
-- **Suite = 24 models:** the 23 in Table S1 **+ INM-CM3.0** (Russia). **Confirmed:** Durack et al. (2016) Nat. Clim. Change Table S2 lists exactly these 23 CMIP3 models **plus `inmcm3_0`** as the 24th — independent corroboration of both the suite and the INM addition. (Minor naming variants there: cccma_cgcm3_1≡_t47, iap_fgoals1_0_g≡iap_fgoals1_0, "ncap_pcm1" is a typo for ncar_pcm1.)
+- **Suite = 24 models:** the 23 in Table S1 **+ INM-CM3.0** (Russia). **Confirmed:** Durack et al. (2014) *Nat. Clim. Change* (doi:10.1038/nclimate2389) Table S2 lists exactly these 23 CMIP3 models **plus `inmcm3_0`** as the 24th — independent corroboration of both the suite and the INM addition. (Minor naming variants there: cccma_cgcm3_1≡_t47, iap_fgoals1_0_g≡iap_fgoals1_0, "ncap_pcm1" is a typo for ncar_pcm1.)
 
 ## Model registry — key configuration/documentation citation per model
 Filled as stages complete; seed citations from the project notes are marked *(given)*, the rest *(to confirm)*.
@@ -192,6 +192,6 @@ All 10 stages + second pass complete. 7 of 8 originally unverified cells resolve
 
 Later passes (after CMIP3): CMIP5 lineage (e.g. GFDL CM3/ESM2M, GISS-E2-H/R, CCSM4) then CMIP6/input4MIPs.
 
-**CMIP5 pre-seeded:** `cmip5/data/cmip5-duracketal16-model-list.csv` — 47 CMIP5 models from Durack et al. (2016) Table S1. Includes the CMIP3-centre descendants: GFDL-CM2p1/CM3/ESM2G/ESM2M, GISS-E2-H/R(+CC), CCSM4/CESM1-*, CNRM-CM5, CSIRO-Mk3.6.0, IPSL-CM5A/B, MPI-ESM-LR/MR/P, HadCM3/HadGEM2-*, MIROC5/-ESM, CanESM2, NorESM1, bcc-csm1-1, FGOALS-g2/s2.
+**CMIP5 pre-seeded:** `cmip5/data/cmip5-duracketal16-model-list.csv` — 47 CMIP5 models from Durack et al. (2014, doi:10.1038/nclimate2389) Table S1 (verified against the supplement PDF 2026-07-04; the "16" in the filename is a legacy misnaming — source is the **2014** paper, not 2016). Table S2 of the same paper is the 23-model CMIP3 list. Includes the CMIP3-centre descendants: GFDL-CM2p1/CM3/ESM2G/ESM2M, GISS-E2-H/R(+CC), CCSM4/CESM1-*, CNRM-CM5, CSIRO-Mk3.6.0, IPSL-CM5A/B, MPI-ESM-LR/MR/P, HadCM3/HadGEM2-*, MIROC5/-ESM, CanESM2, NorESM1, bcc-csm1-1, FGOALS-g2/s2.
 
 **CMIP6 pre-seeded:** `cmip6/data/cmip6-rothig23-model-list.csv` — 46 CMIP6 models / 25 institutions from Röthig et al. (2023) Tables S2–S4. The tables enumerate ScenarioMIP SSP runs, but **the model list is what we use** — every listed model also ran the CMIP6 `historical` experiment (1850–2014) that its SSP runs branch from, so all are in scope. Not exhaustive (full historical ensemble ~100+). **Canonical CMIP6 model registry: WCRP-CMIP/CMIP6_CVs `CMIP6_source_id.json`** (source_id, expanded acronym, institution_id) — reconcile/expand the list against it in the CMIP6 pass; pair with input4MIPs for forcing data. Many are direct descendants of the CMIP3 centres being documented now (GFDL-ESM4/CM4, GISS-E2-1-G/H, NCAR CESM2, CNRM-CM6-1, MIROC6, MRI-ESM2-0, UKESM1, INM-CM5-0, etc.) — a ready lineage bridge. Caveats (typo-dup, full historical ensemble is ~100+) noted in the CSV header.

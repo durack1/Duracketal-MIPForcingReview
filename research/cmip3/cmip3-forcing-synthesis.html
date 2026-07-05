@@ -524,7 +524,7 @@
       <li><strong>MIROC3.2 HiRes and MedRes</strong> treated MD and SS as time-varying but via SPRINTARS interactive aerosol diagnostics (<span style="font-family:var(--mono);font-size:10px;">TV~</span>), not prescribed external datasets — a methodological distinction not captured in the original binary table.</li>
       <li><strong>MPI-ECHAM5</strong> omitted BC, OC, and LU from 20C3M forcing despite Table&nbsp;S1 Y claims on all three, running a sulphate-only anthropogenic aerosol configuration; these three cells carry <span class="conflict-mark">*</span> conflicts.</li>
       <li><strong>HadGEM1</strong> carries two confirmed Table&nbsp;S1 errors: MD=Y is wrong (mineral dust absent from the CLASSIC aerosol scheme, added only in HadGEM2), and LU=&#x2212; is wrong (Goldewijk 2001 HYDE land-use change was included in Run&nbsp;1 per PCMDI PDF §V verbatim).</li>
-      <li><strong>MRI-CGCM2.3.2a</strong> O=Y is a strong candidate error: PCMDI model documentation states <em>"atmospheric chemistry: Not included"</em> and ozone is absent from the model's explicit four-agent 20C3M forcing list (GHGs, sulphate direct, volcanic, solar); definitive confirmation requires Yukimoto et al. (2001) §radiation.</li>
+      <li><strong>MRI-CGCM2.3.2a</strong> O=Y is a <strong>confirmed error</strong> (resolved 2026-07-05): Yukimoto et al. (2001) Table 1 shows ozone is a <em>fixed</em> radiative absorber (O₃ in both shortwave and longwave schemes; confirmed by Yukimoto et al. 2006), i.e. a fixed climatology (FXc), not a time-varying forcing — and ozone is absent from the model's explicit four-agent 20C3M forcing list (GHGs, sulphate direct, volcanic, solar). Table S1 O=Y (time-varying) is therefore wrong.</li>
       <li><strong>NCAR CCSM3</strong> forcing fully resolved from Meehl et al. (2006) §2a: SD is time-varying via a prognostic sulfur cycle (Smith 2001/2004 SO₂ emissions), not a prescribed climatology; BC is time-varying (population-scaled); mineral dust and sea salt are fixed at year-2000 values (FXk) as is land use; OC remains unconfirmed pending Collins (2006b).</li>
       <li><strong>CSIRO Mk3.0 and Mk3.5</strong> SD was reclassified: the Penner et al. (1994) sulphate dataset is a single-year emissions inventory providing a fixed seasonal climatology (FXc), not a time-varying transient dataset as originally coded.</li>
       <li><strong>IPSL-CM4</strong> O=Y is a confirmed Table&nbsp;S1 error: the PCMDI PDF §V 20C3M section closes with <em>"All other variables are kept constant. There are no natural forcings"</em> — ozone is held at a fixed climatological value throughout the 20C3M run, contradicting the Y claim.</li>
@@ -731,7 +731,7 @@ const MODELS = [
   {
     id: 'mri_cgcm2_3_2a', centre: 'MRI',
     G:  TV(),
-    O:  NAx('Table S1 Y; strong candidate error — PCMDI PDF §II.A: "atmospheric chemistry: Not included"; absent from four-agent forcing list'),
+    O:  FXcx('Table S1 Y (time-varying) is a CONFIRMED error. Ozone is a FIXED radiative absorber in the MRI-CGCM2 radiation scheme (Yukimoto 2001 Table 1: O₃ in SW & LW; Yukimoto 2006) — not time-varying — and is absent from the PCMDI four-agent 20C3M forcing list. Correct code: FXc. Resolved 2026-07-05.'),
     SD: TV(),   SI: NA(),
     BC: NA(),   OC: NA(),    MD: NA(),   SS: NA(),
     LU: NA(),
@@ -746,7 +746,7 @@ const MODELS = [
     SD: TV('Prognostic sulfur cycle; Smith 2001/2004 SO₂ emissions (Meehl 2006 §2a)'),
     SI: NA(),
     BC: TV('Population-scaled time-evolving; fixed spatial pattern (Meehl 2006 §2a)'),
-    OC: UNK('Collins 2006 default = prescribed distribution from 3D assimilation (FXc/FXk); Meehl 2006 made BC TV but did not mention OC — 20C3M treatment unconfirmed'),
+    OC: TV('CAM3 treats BC+OC as a single "carbonaceous" aerosol field (Collins et al. 2006b §2d); Meehl 2006 confirms BC is population-scaled time-varying in 20C3M, so OC follows by construction → TV. Resolved 2026-07-05.'),
     MD: FXk('Fixed at year 2000 values throughout 20C3M (Meehl 2006 §2a)'),
     SS: FXk('Fixed at year 2000 values throughout 20C3M (Meehl 2006 §2a)'),
     LU: FXk('Fixed present-day land cover throughout 20C3M (Meehl 2006 §2a)'),

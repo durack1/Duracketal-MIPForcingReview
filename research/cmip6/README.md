@@ -26,7 +26,7 @@ In CMIP5 the baseline was Taylor et al. 2012 (BAMS). In CMIP6:
 | O  | Ozone | Checa-Garcia et al. 2018 CMIP6 AC&C/SPARC database (for models w/o interactive chem) | *GMD* 11, doi:10.5194/gmd-11-2233-2018 |
 | SD/BC/OC | Anthropogenic aerosol emissions | Hoesly et al. 2018 CEDS (Community Emissions Data System) | `CEDS-2017-05-18` + `CEDS-2017-08-30` | *GMD* 11, doi:10.5194/gmd-11-369-2018 |
 | SD/BC/OC | Biomass burning emissions | van Marle et al. 2017 BB4CMIP6 (GFED4s + FIRE-MIP) | `VUA-CMIP-BB4CMIP6-1-2` | *GMD* 10, doi:10.5194/gmd-10-3329-2017 |
-| SD/BC/OC | Aerosol optical properties (prescribed, non-interactive) | Stevens et al. 2017 MACv2-Simple Plumes | `MPI-M-MACv2-SP-1-0` | *ACP* 17, doi:10.5194/acp-17-12871-2017 |
+| SD/BC/OC | Aerosol optical properties (prescribed, non-interactive) | Stevens et al. 2017 MACv2-Simple Plumes | `MPI-M-MACv2-SP-1-0` | *GMD* 10, 433–452, doi:10.5194/gmd-10-433-2017 |
 | LU | Land-use change | Hurtt et al. 2020 LUH2 v2.1h transitions | `UofMD-landState-2-1-h` | *GMD* 13, doi:10.5194/gmd-13-5425-2020 |
 | SO | Solar irradiance | Matthes et al. 2017 SOLARIS-HEPPA-3-2 (TSI + SSI spectrally resolved) | `SOLARIS-HEPPA-3-2` | *GMD* 10, doi:10.5194/gmd-10-2247-2017 |
 | VL | Volcanic stratospheric aerosols | IACETH SAGE3λ v3.0.0 (SAGE/SAM/CALIPSO/OSIRIS/2D-model merged) | `IACETH-SAGE3lambda-3-0-0` | Thomason et al. 2018 *ESSD* 10, doi:10.5194/essd-10-469-2018 |
